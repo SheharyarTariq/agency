@@ -55,6 +55,15 @@ body::before {
   color: var(--ink);
 }
 
+/* Keep autofilled CTA form fields readable (dark text on white) */
+#contact input:-webkit-autofill,
+#contact input:-webkit-autofill:hover,
+#contact input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink);
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  caret-color: var(--ink);
+}
+
 /* Smooth section entries */
 .fade-up {
   opacity: 0;

@@ -87,14 +87,14 @@ function SelectField({
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-white/6 border border-white/12 rounded-xl px-4 py-3 text-sm text-cream-50 placeholder-cream-50/25 focus:outline-none focus:border-teal-500/60 focus:bg-white/8 transition-all duration-200 appearance-none cursor-pointer"
+        className="w-full bg-white border border-white/12 rounded-xl px-4 py-3 text-sm text-ink-950 placeholder-ink-950/40 [color-scheme:light] focus:outline-none focus:border-teal-500/60 transition-all duration-200 appearance-none cursor-pointer"
         style={{ backgroundImage: "none" }}
       >
-        <option value="" disabled className="bg-ink-950">
+        <option value="" disabled className="bg-white text-ink-950">
           Select one…
         </option>
         {options.map((o) => (
-          <option key={o} value={o} className="bg-ink-950">
+          <option key={o} value={o} className="bg-white text-ink-950">
             {o}
           </option>
         ))}
@@ -130,7 +130,7 @@ function InputField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full bg-white/6 border border-white/12 rounded-xl px-4 py-3 text-sm text-cream-50 placeholder-cream-50/25 focus:outline-none focus:border-teal-500/60 focus:bg-white/8 transition-all duration-200"
+        className="w-full bg-white border border-white/12 rounded-xl px-4 py-3 text-sm text-ink-950 placeholder-ink-950/40 [color-scheme:light] focus:outline-none focus:border-teal-500/60 transition-all duration-200"
       />
     </div>
   );
@@ -142,6 +142,7 @@ export default function CTA() {
   const [form, setForm] = useState<FormData>(emptyForm);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const set = (key: keyof FormData) => (v: string) =>
     setForm((prev) => ({ ...prev, [key]: v }));
@@ -149,11 +150,25 @@ export default function CTA() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // TODO: Replace with real API call, e.g.:
-    // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(form) })
-    await new Promise((r) => setTimeout(r, 900)); // simulate network
-    setLoading(false);
-    setSubmitted(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -315,6 +330,7 @@ export default function CTA() {
                       onClick={() => {
                         setSubmitted(false);
                         setForm(emptyForm);
+                        setError(null);
                       }}
                       className="text-[13px] text-teal-400 hover:text-teal-300 transition-colors underline underline-offset-2"
                     >
@@ -404,7 +420,7 @@ export default function CTA() {
                         value={form.message}
                         onChange={(e) => set("message")(e.target.value)}
                         placeholder="What are you building? What problem are you solving? Any details help…"
-                        className="w-full bg-white/6 border border-white/12 rounded-xl px-4 py-3 text-sm text-cream-50 placeholder-cream-50/25 focus:outline-none focus:border-teal-500/60 focus:bg-white/8 transition-all duration-200 resize-none"
+                        className="w-full bg-white border border-white/12 rounded-xl px-4 py-3 text-sm text-ink-950 placeholder-ink-950/40 [color-scheme:light] focus:outline-none focus:border-teal-500/60 transition-all duration-200 resize-none"
                       />
                     </div>
 
@@ -430,6 +446,12 @@ export default function CTA() {
                         </>
                       )}
                     </button>
+
+                    {error && (
+                      <p className="text-center text-[12px] text-red-400/90">
+                        {error}
+                      </p>
+                    )}
 
                     <p className="text-center text-[11px] text-cream-50/20">
                       No commitment. No spam. Just a conversation.

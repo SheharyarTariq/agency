@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "Will we work directly with senior designers or get handed to juniors?",
-    a: "Always seniors. Every AlgoThink Solutions project is led by a senior creative or developer from day one. No hand-offs, no surprises.",
+    a: "Always seniors. Every Devlyncs project is led by a senior creative or developer from day one. No hand-offs, no surprises.",
   },
   {
     q: "What does the process look like once we sign?",
@@ -104,7 +104,7 @@ export default function FAQ() {
             >
               Can&apos;t find your answer? Drop us a line at{" "}
               <span className="text-ink-950/70">
-                hello@algothinksolutions.com
+                support@devlyncs.com
               </span>
             </motion.p>
 

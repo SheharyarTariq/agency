@@ -228,8 +228,8 @@ export default function Pricing() {
           </motion.p>
         </div>
 
-        {/* Pricing cards — horizontal scroll on mobile, 3-col on desktop (but offset, not equal) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 items-start">
+        {/* Pricing cards — 3-col on desktop, equal height with the Growth card offset to pop out */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 items-stretch">
           {plans.map((plan, i) => (
             <PricingCard key={plan.name} plan={plan} index={i} />
           ))}

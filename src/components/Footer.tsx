@@ -20,7 +20,7 @@ const links = {
   Connect: [
     "Contact us",
     "Book a call",
-    "hello@algothinksolutions.com",
+    "support@devlyncs.com",
     "LinkedIn",
     "Dribbble",
   ],
@@ -102,7 +102,7 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="text-[12px] text-cream-50/25">
-            &copy; {new Date().getFullYear()} AlgoThink Solutions Ltd. All
+            &copy; {new Date().getFullYear()} Devlyncs Ltd. All
             rights reserved.
           </p>
           <p className="text-[12px] text-cream-50/20">Crafted with care</p>

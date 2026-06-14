@@ -160,7 +160,7 @@ const TICKER_WORDS = [
   "·",
   "Next.js",
   "·",
-  "AlgoThink",
+  "Devlyncs",
   "·",
 ];
 
@@ -365,7 +365,7 @@ const ChapterStudio = memo(function ChapterStudio({
           className="text-[11px] uppercase tracking-[0.28em] font-semibold text-teal-400 mb-8"
           style={{ opacity }}
         >
-          AlgoThink Solutions
+          Devlyncs
         </motion.p>
 
         <h2 className="font-display text-[clamp(3rem,8vw,7rem)] leading-[0.92] tracking-tight text-cream-50 mb-8">
@@ -712,7 +712,7 @@ export default function ScrollStory() {
     <section
       ref={sectionRef}
       className="bg-ink-950 relative"
-      aria-label="AlgoThink Solutions story"
+      aria-label="Devlyncs story"
     >
       {/* GSAP canvas — floats across the entire section */}
       <ParticleCanvas sectionRef={sectionRef} />

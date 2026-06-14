@@ -18,7 +18,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "AlgoThink Solutions — Creative Agency",
+  title: "Devlyncs — Creative Agency",
   description:
     "Full-service creative studio building brands, products, and campaigns for ambitious founders and forward-thinking companies.",
   keywords: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "AlgoThink Solutions — Creative Agency",
+    title: "Devlyncs — Creative Agency",
     description:
       "Full-service creative studio building brands, products, and campaigns for ambitious founders.",
     type: "website",

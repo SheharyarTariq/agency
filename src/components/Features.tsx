@@ -242,7 +242,7 @@ export default function Features() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-ink-950/12 bg-ink-950/4 mb-5"
           >
             <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-ink-800/60">
-              Why AlgoThink Solutions
+              Why Devlyncs
             </span>
           </motion.div>
           <motion.h2

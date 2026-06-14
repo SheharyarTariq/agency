@@ -276,7 +276,7 @@ export default function Hero() {
               }}
               className="text-[1.125rem] leading-relaxed text-ink-800/65 max-w-[55ch] mb-10"
             >
-              AlgoThink Solutions is a full-service creative studio building
+              Devlyncs is a full-service creative studio building
               brands, products, and campaigns for ambitious founders and
               forward-thinking companies.
             </motion.p>

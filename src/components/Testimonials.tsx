@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight, Quotes } from "@phosphor-icons/react";
 const testimonials = [
   {
     quote:
-      "AlgoThink Solutions completely transformed how our brand shows up in the world. The identity they built for us was unlike anything we'd seen in our space — bold, considered, and built to last. We've had more compliments on our branding in the last six months than in the previous five years.",
+      "Devlyncs completely transformed how our brand shows up in the world. The identity they built for us was unlike anything we'd seen in our space — bold, considered, and built to last. We've had more compliments on our branding in the last six months than in the previous five years.",
     author: "Harriet Wyndham",
     role: "Founder, Meridian Co.",
     avatar: "seed/harriet/80/80",
@@ -15,7 +15,7 @@ const testimonials = [
   },
   {
     quote:
-      "We came to AlgoThink Solutions with a vague idea and a tight deadline. They came back with a clear strategy, a beautiful design, and a site that launched on time. The process felt collaborative the entire way through — never like handing off to a black box.",
+      "We came to Devlyncs with a vague idea and a tight deadline. They came back with a clear strategy, a beautiful design, and a site that launched on time. The process felt collaborative the entire way through — never like handing off to a black box.",
     author: "Priya Krishnamurthy",
     role: "CEO, Pulse Technologies",
     avatar: "seed/priya/80/80",
@@ -23,7 +23,7 @@ const testimonials = [
   },
   {
     quote:
-      "Working with AlgoThink Solutions on our product redesign was the best decision we made last year. They asked the right questions, pushed back when our instincts were wrong, and delivered a UI our users actually love. Our activation rate went up by 34% in the first quarter post-launch.",
+      "Working with Devlyncs on our product redesign was the best decision we made last year. They asked the right questions, pushed back when our instincts were wrong, and delivered a UI our users actually love. Our activation rate went up by 34% in the first quarter post-launch.",
     author: "Tobias Eckermann",
     role: "Head of Product, Vanta Labs",
     avatar: "seed/tobias/80/80",
@@ -31,7 +31,7 @@ const testimonials = [
   },
   {
     quote:
-      "I've worked with a lot of agencies over the years. AlgoThink Solutions is the first one that felt like a genuine partner rather than a vendor. They cared about the outcome, not just the deliverable — and the work reflects that.",
+      "I've worked with a lot of agencies over the years. Devlyncs is the first one that felt like a genuine partner rather than a vendor. They cared about the outcome, not just the deliverable — and the work reflects that.",
     author: "Celia Okafor-Briggs",
     role: "CMO, Luma Studio",
     avatar: "seed/celia/80/80",
@@ -39,7 +39,7 @@ const testimonials = [
   },
   {
     quote:
-      "The AlgoThink Solutions team handled our full rebrand and website build simultaneously without missing a beat. Communication was excellent — weekly updates, no surprises. I'd recommend them to anyone who wants quality work done properly.",
+      "The Devlyncs team handled our full rebrand and website build simultaneously without missing a beat. Communication was excellent — weekly updates, no surprises. I'd recommend them to anyone who wants quality work done properly.",
     author: "James Rutherford",
     role: "Director, Crest Finance",
     avatar: "seed/james/80/80",

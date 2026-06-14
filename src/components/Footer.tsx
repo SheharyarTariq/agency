@@ -47,16 +47,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 mb-14 pb-14 border-b border-white/8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2.5 mb-5">
+            <div className="flex items-center mb-5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/favicon.svg"
-                alt="AlgoThink Solutions"
-                className="w-7 h-7"
+                alt="Devlyncs"
+                className="w-12 h-12"
               />
-              <span className="font-display font-600 text-[15px] tracking-tight text-cream-50">
-                AlgoThink Solutions
-              </span>
             </div>
             <p className="text-sm leading-relaxed text-cream-50/35 max-w-[28ch] mb-6">
               A full-service creative studio crafting brands, products, and

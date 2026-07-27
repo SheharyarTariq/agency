@@ -9,12 +9,14 @@ import {
 } from "@phosphor-icons/react";
 
 const links = {
-  Work: [
-    "Brand Identity",
-    "Web & App Design",
-    "Development",
-    "Digital Marketing",
-    "View all projects",
+  Services: [
+    "Web Design",
+    "Web Development",
+    "UX/UI Design",
+    "Mobile Development",
+    "Digital Product Design",
+    "Testing & QA",
+    "Graphic Design",
   ],
   Company: ["About us", "Our process", "Careers", "Blog", "Press"],
   Connect: [
@@ -56,8 +58,8 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm leading-relaxed text-cream-50/35 max-w-[28ch] mb-6">
-              A full-service creative studio crafting brands, products, and
-              campaigns for ambitious companies.
+              A full-service digital agency designing, building, and testing
+              web and mobile products for ambitious companies.
             </p>
 
             {/* Social icons */}

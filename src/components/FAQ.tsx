@@ -10,8 +10,8 @@ const faqs = [
     a: "Depends on scope. A landing page takes 2–3 weeks. A full brand + website typically runs 6–10 weeks. We'll give you a detailed timeline in our proposal.",
   },
   {
-    q: "What's your minimum project budget?",
-    a: "Our Starter package begins at $3,500. We don't take on projects below this threshold as we believe in doing every project properly.",
+    q: "How much will my project cost?",
+    a: "Every project is scoped individually — there's no fixed price list. Book a free call and we'll walk through your goals, then send over a clear, honest quote before any work begins.",
   },
   {
     q: "Do you work with startups or only established companies?",
@@ -23,15 +23,15 @@ const faqs = [
   },
   {
     q: "What does the process look like once we sign?",
-    a: "Discovery call → Proposal → Kick-off → Weekly check-ins → Delivery → 14–90 days support depending on your package.",
+    a: "Discovery call → Proposal → Kick-off → Weekly check-ins → Delivery → post-launch support tailored to your project's scope.",
   },
   {
     q: "Do you offer ongoing retainer support?",
-    a: "Yes — our Scale package includes retainer options. We can also set up a custom monthly hours arrangement after project delivery.",
+    a: "Yes — we can set up a custom monthly hours arrangement for ongoing feature work, maintenance, or support after your project ships.",
   },
   {
     q: "Who owns the final designs and code?",
-    a: "You do, completely. Full IP transfer is included in every package. No licensing, no lock-in.",
+    a: "You do, completely. Full IP transfer is included in every project. No licensing, no lock-in.",
   },
   {
     q: "Can you work with our existing brand or do we start from scratch?",
@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: "Do you require a deposit?",
-    a: "Yes — 50% upfront to begin, 50% on delivery. For larger Scale engagements, we use milestone-based payments.",
+    a: "Yes — typically 50% upfront and 50% on delivery. For larger engagements, we switch to milestone-based payments instead.",
   },
   {
     q: "What time zones do you work in?",

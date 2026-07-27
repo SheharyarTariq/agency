@@ -18,17 +18,18 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Devlyncs — Creative Agency",
+  title: "Devlyncs — Digital Product Agency",
   description:
-    "Full-service creative studio building brands, products, and campaigns for ambitious founders and forward-thinking companies.",
+    "Full-service digital agency building websites, apps, and AI-powered products for ambitious founders and forward-thinking companies.",
   keywords: [
-    "creative agency",
-    "brand identity",
+    "digital agency",
     "web design",
+    "web development",
     "UI UX design",
-    "digital marketing",
+    "mobile app development",
+    "digital product design",
+    "QA testing",
     "Next.js development",
-    "UK agency",
   ],
   icons: {
     icon: "/favicon.svg",
@@ -36,9 +37,9 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "Devlyncs — Creative Agency",
+    title: "Devlyncs — Digital Product Agency",
     description:
-      "Full-service creative studio building brands, products, and campaigns for ambitious founders.",
+      "Full-service digital agency building websites, apps, and AI-powered products for ambitious founders.",
     type: "website",
   },
 };

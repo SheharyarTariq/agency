@@ -203,8 +203,8 @@ function MagneticButton({
 
 const trustBadges = [
   { icon: Star, text: "4.9 / 5 client rating" },
-  { icon: Users, text: "60+ brands served" },
-  { icon: Trophy, text: "8 years of craft" },
+  { icon: Users, text: "Senior-only delivery team" },
+  { icon: Trophy, text: "Shipped in weeks, not months" },
 ];
 
 export default function Hero() {
@@ -245,7 +245,7 @@ export default function Hero() {
             >
               <div className="w-1.5 h-1.5 rounded-full bg-teal-600 animate-pulse-soft" />
               <span className="text-[11px] uppercase tracking-[0.18em] font-semibold text-teal-700">
-                Creative Studio · Est. 2016
+                Digital Product Agency · AI-Native Builds
               </span>
             </motion.div>
 
@@ -260,9 +260,9 @@ export default function Hero() {
               }}
               className="font-display text-[clamp(3rem,7vw,6rem)] leading-[0.95] tracking-tight text-ink-950 mb-6"
             >
-              We craft digital
+              We build digital
               <br />
-              <em className="not-italic text-teal-600">experiences.</em>
+              <em className="not-italic text-teal-600">products, fast.</em>
             </motion.h1>
 
             {/* Subheading */}
@@ -276,9 +276,10 @@ export default function Hero() {
               }}
               className="text-[1.125rem] leading-relaxed text-ink-800/65 max-w-[55ch] mb-10"
             >
-              Devlyncs is a full-service creative studio building
-              brands, products, and campaigns for ambitious founders and
-              forward-thinking companies.
+              Devlyncs is a full-service digital agency designing and
+              engineering websites, apps, and AI-powered products for
+              ambitious founders and forward-thinking companies — senior
+              team, sharp turnarounds, no juniors in the loop.
             </motion.p>
 
             {/* Availability badge */}
@@ -313,7 +314,7 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-3 mb-12"
             >
               <MagneticButton href="#contact">
-                Start a Project
+                Book a Call
                 <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] group-hover:scale-110 transition-transform duration-300">
                   <ArrowRight size={13} weight="bold" />
                 </span>

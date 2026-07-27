@@ -461,7 +461,7 @@ export default function Portfolio() {
               }}
               className="group inline-flex items-center gap-2 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors self-start lg:self-auto"
             >
-              Start your project
+              Book a call
               <span className="w-7 h-7 rounded-full bg-teal-600/10 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-all duration-300">
                 <ArrowUpRight size={12} weight="bold" />
               </span>

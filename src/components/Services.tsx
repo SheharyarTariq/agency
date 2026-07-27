@@ -6,48 +6,81 @@ import { ArrowRight } from "@phosphor-icons/react";
 
 const services = [
   {
-    title: "Brand Identity",
-    tagline: "Strategy & Design",
+    title: "Web Design",
+    tagline: "Web Design",
     description:
-      "From naming and positioning to logo, typography, and brand guidelines — we build identities that are distinctive, durable, and designed to grow.",
+      "Mobile-first, conversion-focused design for landing pages, corporate sites, and e-commerce storefronts — built to engage visitors and turn them into customers.",
     price: "from $2,500",
-    image: "https://picsum.photos/seed/brand-identity/640/480",
+    image: "https://picsum.photos/seed/web-design-svc/640/480",
     accent: "teal",
     span: "lg:col-span-7",
     height: "h-56",
   },
   {
-    title: "Web & App Design",
-    tagline: "UI / UX",
+    title: "Web Development",
+    tagline: "Web Development",
     description:
-      "Pixel-perfect interfaces backed by user research, prototyping, and design systems that scale across every screen.",
-    price: "from $3,500",
-    image: "https://picsum.photos/seed/web-design/640/400",
-    accent: "slate",
-    span: "lg:col-span-5",
-    height: "h-48",
-  },
-  {
-    title: "Development",
-    tagline: "Next.js & React",
-    description:
-      "Full-stack web builds using modern technologies — fast, accessible, and engineered to last well beyond launch day.",
+      "Custom web apps, SaaS platforms, and internal tools with clean API integrations and architecture built to scale as your product grows.",
     price: "from $4,500",
-    image: "https://picsum.photos/seed/development/640/400",
+    image: "https://picsum.photos/seed/web-development-svc/640/400",
     accent: "slate",
     span: "lg:col-span-5",
     height: "h-48",
   },
   {
-    title: "Digital Marketing",
-    tagline: "Growth & Campaigns",
+    title: "UX/UI Design",
+    tagline: "UX/UI Design",
     description:
-      "SEO, paid media, email, and social — strategic campaigns that connect your brand with the right audiences and drive measurable results.",
-    price: "from $1,200/mo",
-    image: "https://picsum.photos/seed/digital-marketing/640/480",
+      "User research, wireframes, prototypes, and design systems for mobile-first interfaces that feel effortless from the first tap.",
+    price: "from $3,000",
+    image: "https://picsum.photos/seed/uxui-svc/640/400",
+    accent: "slate",
+    span: "lg:col-span-5",
+    height: "h-48",
+  },
+  {
+    title: "Mobile Development",
+    tagline: "Mobile Development",
+    description:
+      "Native iOS and Android apps, plus cross-platform builds with React Native and Flutter — one codebase, every device.",
+    price: "from $6,000",
+    image: "https://picsum.photos/seed/mobile-dev-svc/640/480",
     accent: "teal",
     span: "lg:col-span-7",
     height: "h-56",
+  },
+  {
+    title: "Digital Product Design",
+    tagline: "Digital Product Design",
+    description:
+      "MVP design and product strategy for founders — rapid prototyping that gets your idea in front of users and investors fast.",
+    price: "from $3,500",
+    image: "https://picsum.photos/seed/product-design-svc/640/400",
+    accent: "slate",
+    span: "lg:col-span-4",
+    height: "h-48",
+  },
+  {
+    title: "Testing & QA",
+    tagline: "Testing & QA",
+    description:
+      "Manual and automated testing — including regression, performance, and security checks — so what you ship actually holds up.",
+    price: "from $1,500",
+    image: "https://picsum.photos/seed/qa-testing-svc/640/400",
+    accent: "slate",
+    span: "lg:col-span-4",
+    height: "h-48",
+  },
+  {
+    title: "Graphic Design",
+    tagline: "Graphic Design",
+    description:
+      "Brand identity, marketing assets, social content, and pitch decks — visual storytelling that makes your product stick in people's minds.",
+    price: "from $1,200",
+    image: "https://picsum.photos/seed/graphic-design-svc/640/400",
+    accent: "slate",
+    span: "lg:col-span-4",
+    height: "h-48",
   },
 ];
 
@@ -155,7 +188,7 @@ export default function Services() {
               }}
               className="font-display text-[clamp(2.25rem,4vw,3.5rem)] leading-tight tracking-tight text-ink-950"
             >
-              End-to-end creative
+              End-to-end product
               <br />
               <em className="not-italic text-ink-800/45">for every stage.</em>
             </motion.h2>
@@ -167,8 +200,9 @@ export default function Services() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-sm leading-relaxed text-ink-800/55 max-w-[38ch] lg:text-right"
           >
-            Whether you need a brand built from scratch or a full digital
-            product shipped — we have the expertise and the team to deliver.
+            Whether you need an MVP validated or a full product shipped
+            across web and mobile — we have the expertise and the team to
+            deliver.
           </motion.p>
         </div>
 

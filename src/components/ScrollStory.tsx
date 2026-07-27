@@ -144,21 +144,19 @@ function ParticleCanvas({
 
 // ── GSAP Horizontal Word Ticker ───────────────────────────────────────────────
 const TICKER_WORDS = [
-  "Brand Identity",
-  "·",
-  "UI/UX Design",
+  "Web Design",
   "·",
   "Web Development",
   "·",
-  "Digital Marketing",
+  "UX/UI Design",
   "·",
-  "Strategy",
+  "Mobile Development",
   "·",
-  "Growth",
+  "Product Design",
   "·",
-  "React",
+  "Testing & QA",
   "·",
-  "Next.js",
+  "Graphic Design",
   "·",
   "Devlyncs",
   "·",
@@ -382,7 +380,7 @@ const ChapterStudio = memo(function ChapterStudio({
               className="block text-teal-400"
               style={{ y: headY2, ...WILL_CHANGE_T }}
             >
-              become brands.
+              become products.
             </motion.span>
           </span>
         </h2>
@@ -410,7 +408,7 @@ const STATS = [
   { value: "120+", label: "Projects delivered" },
   { value: "98%", label: "Client satisfaction" },
   { value: "8 yrs", label: "In business" },
-  { value: "60+", label: "Brands helped" },
+  { value: "60+", label: "Founders trusted" },
 ] as const;
 
 function StatItem({
@@ -494,16 +492,20 @@ const ChapterNumbers = memo(function ChapterNumbers({
 const SERVICES = [
   {
     n: "01",
-    name: "Brand Identity",
-    desc: "Strategy · Logo · Typography · Guidelines",
+    name: "Web & App Design",
+    desc: "UX/UI · Prototypes · Design Systems",
   },
   {
     n: "02",
-    name: "Web & App Design",
-    desc: "UI/UX · Prototypes · Design Systems",
+    name: "Web & Mobile Dev",
+    desc: "Next.js · React Native · Full-stack",
   },
-  { n: "03", name: "Development", desc: "Next.js · React · Full-stack" },
-  { n: "04", name: "Digital Marketing", desc: "SEO · Campaigns · Growth" },
+  {
+    n: "03",
+    name: "Product Design",
+    desc: "MVP Strategy · Rapid Prototyping",
+  },
+  { n: "04", name: "Testing & QA", desc: "Manual · Automated · Security" },
 ] as const;
 
 function ServiceRow({
@@ -623,7 +625,7 @@ const ChapterCTA = memo(function ChapterCTA({
             href="#contact"
             className="inline-flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-teal-600 text-white text-sm font-semibold hover:bg-teal-500 transition-colors duration-300 shadow-teal mt-4"
           >
-            Start a project
+            Book a call
             <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                 <path

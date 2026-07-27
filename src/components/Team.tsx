@@ -45,8 +45,8 @@ const RILEY = {
   avatarFrom: "from-amber-100",
   avatarTo: "to-orange-50",
   name: "Riley Park",
-  role: "Marketing Lead",
-  specialty: "SEO, campaigns, growth strategy",
+  role: "QA & Mobile Lead",
+  specialty: "Mobile development, test automation, release quality",
 };
 
 const MEMBERS = [ALEX, SAM, JORDAN, RILEY];

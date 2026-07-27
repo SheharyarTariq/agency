@@ -46,9 +46,9 @@ const features = [
   },
   {
     icon: TrendUp,
-    title: "Built to scale",
+    title: "Ship in weeks, not months",
     description:
-      "From a lean MVP to an enterprise platform — we design and build systems that grow with your ambitions.",
+      "A tight, senior team means fewer hand-offs and faster iteration. From a lean MVP to an enterprise platform, we move at founder speed.",
     span: "lg:col-span-4",
     dark: true,
   },

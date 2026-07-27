@@ -8,11 +8,13 @@ import { ArrowRight, CheckCircle, PaperPlaneTilt } from "@phosphor-icons/react";
 // For now the form shows a success state on submit.
 
 const projectTypes = [
-  "Brand Identity",
   "Web Design",
   "Web Development",
-  "Digital Marketing",
-  "Full-Service (Brand + Web)",
+  "UX/UI Design",
+  "Mobile Development",
+  "Digital Product Design",
+  "Testing & QA",
+  "Graphic Design",
   "Other / Not sure yet",
 ];
 

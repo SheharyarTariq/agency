@@ -13,7 +13,7 @@ const navLinks = [
   { label: "Work", href: "#portfolio" },
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export default function Navbar() {
@@ -94,7 +94,7 @@ export default function Navbar() {
             href="#contact"
             className="group hidden md:flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full bg-ink-950 text-cream-50 text-[13px] font-semibold hover:bg-ink-800 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] active:scale-[0.97]"
           >
-            Start a Project
+            Book a Call
             <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-110 transition-transform duration-300">
               <ArrowRight size={11} weight="bold" />
             </span>
@@ -166,7 +166,7 @@ export default function Navbar() {
                 }}
                 className="mt-6 w-full text-center py-4 rounded-full bg-ink-950 text-cream-50 text-lg font-semibold"
               >
-                Start a Project
+                Book a Call
               </motion.a>
             </div>
           </motion.div>

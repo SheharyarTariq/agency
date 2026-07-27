@@ -13,7 +13,7 @@ const stats = [
     decimals: 0,
   },
   { value: 8, suffix: " yrs", label: "Years in business", prefix: "" },
-  { value: 60, suffix: "+", label: "Brands helped", prefix: "" },
+  { value: 60, suffix: "+", label: "Founders trusted", prefix: "" },
 ];
 
 function CountUp({

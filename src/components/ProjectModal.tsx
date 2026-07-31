@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, CaretLeft, CaretRight } from "@phosphor-icons/react";
 
@@ -90,16 +91,23 @@ export default function ProjectModal({ project, onClose }: Props) {
               {/* Image gallery */}
               <div className="relative bg-ink-900 aspect-[16/9] overflow-hidden">
                 <AnimatePresence mode="wait">
-                  <motion.img
+                  <motion.div
                     key={slide}
-                    src={project.screenshots[slide]}
-                    alt={`${project.title} screenshot ${slide + 1}`}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="w-full h-full object-cover object-top"
-                  />
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={project.screenshots[slide]}
+                      alt={`${project.title} screenshot ${slide + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 960px"
+                      priority={slide === 0}
+                      className="object-cover object-top"
+                    />
+                  </motion.div>
                 </AnimatePresence>
 
                 {/* Nav arrows */}
@@ -159,13 +167,15 @@ export default function ProjectModal({ project, onClose }: Props) {
                     <button
                       key={i}
                       onClick={() => setSlide(i)}
-                      className={`flex-shrink-0 w-16 h-10 rounded-lg overflow-hidden border-2 transition-all ${i === slide ? "border-teal-500 opacity-100" : "border-transparent opacity-50 hover:opacity-75"}`}
+                      className={`relative flex-shrink-0 w-16 h-10 rounded-lg overflow-hidden border-2 transition-all ${i === slide ? "border-teal-500 opacity-100" : "border-transparent opacity-50 hover:opacity-75"}`}
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
+                      <Image
                         src={src}
                         alt=""
-                        className="w-full h-full object-cover object-top"
+                        fill
+                        sizes="64px"
+                        quality={40}
+                        className="object-cover object-top"
                       />
                     </button>
                   ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import ProjectModal, { type Project } from "./ProjectModal";
@@ -308,11 +309,12 @@ function ProjectCard({
         className={`group block relative overflow-hidden rounded-[2rem] border border-ink-950/8 shadow-soft hover:shadow-soft-lg transition-shadow duration-500 ${height} w-full text-left`}
         aria-label={`View ${project.title} case study`}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={project.coverImage}
           alt={`${project.title} — ${project.category}`}
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          fill
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          className="object-cover object-top"
         />
         <HoverOverlay />
         <CategoryTag label={project.category} />
@@ -371,11 +373,12 @@ function LegacyCard({
         className={`group block relative overflow-hidden rounded-[2rem] border border-ink-950/8 shadow-soft hover:shadow-soft-lg transition-shadow duration-500 ${height}`}
         aria-label={`View ${title} project`}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={src}
           alt={alt}
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          fill
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          className="object-cover object-top"
         />
         <HoverOverlay />
         <CategoryTag label={category} />

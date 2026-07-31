@@ -22,7 +22,6 @@ export default function Navbar() {
   const { scrollY } = useScroll();
 
   const navOpacity = useTransform(scrollY, [0, 80], [0.85, 0.98]);
-  const navBlur = useTransform(scrollY, [0, 80], [8, 20]);
 
   useEffect(() => {
     const unsub = scrollY.on("change", (v) => setScrolled(v > 40));

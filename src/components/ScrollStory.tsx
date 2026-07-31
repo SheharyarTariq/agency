@@ -64,7 +64,11 @@ function ParticleCanvas({
 
     const spawnParticles = () => {
       particles = [];
-      const count = Math.floor((canvas.width * canvas.height) / 14000);
+      // Cap the count so very tall sections don't spawn hundreds of particles.
+      const count = Math.min(
+        Math.floor((canvas.width * canvas.height) / 14000),
+        220,
+      );
       for (let i = 0; i < count; i++) {
         const color = COLORS[Math.floor(Math.random() * COLORS.length)];
         particles.push({
@@ -89,6 +93,8 @@ function ParticleCanvas({
         scrollProgress = self.progress;
       },
     });
+
+    let running = false;
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -115,15 +121,43 @@ function ParticleCanvas({
         ctx.fill();
       });
 
-      animId = requestAnimationFrame(draw);
+      if (running) animId = requestAnimationFrame(draw);
     };
 
+    // Only animate while the section is actually on screen — this canvas
+    // spans the entire (very tall) scroll story, so it would otherwise run
+    // in the background for the whole time it's scrolled past.
+    let inViewport = true;
+    const shouldRun = () => inViewport && document.visibilityState === "visible";
+    const syncLoop = () => {
+      if (shouldRun() && !running) {
+        running = true;
+        draw();
+      } else if (!shouldRun() && running) {
+        running = false;
+        cancelAnimationFrame(animId);
+      }
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inViewport = entry.isIntersecting;
+        syncLoop();
+      },
+      { threshold: 0 },
+    );
+    io.observe(canvas);
+    document.addEventListener("visibilitychange", syncLoop);
+
     resize();
-    draw();
+    syncLoop();
     window.addEventListener("resize", resize);
 
     return () => {
+      running = false;
       cancelAnimationFrame(animId);
+      io.disconnect();
+      document.removeEventListener("visibilitychange", syncLoop);
       st.kill();
       window.removeEventListener("resize", resize);
     };

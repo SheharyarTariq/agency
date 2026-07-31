@@ -11,7 +11,8 @@ const services = [
     description:
       "Mobile-first, conversion-focused design for landing pages, corporate sites, and e-commerce storefronts — built to engage visitors and turn them into customers.",
     price: "from $2,500",
-    image: "https://picsum.photos/seed/web-design-svc/640/480",
+    image:
+      "https://images.unsplash.com/photo-1707836885254-79b6e3d7b18d?w=640&h=480&fit=crop&q=80",
     accent: "teal",
     span: "lg:col-span-7",
     height: "h-56",
@@ -22,7 +23,8 @@ const services = [
     description:
       "Custom web apps, SaaS platforms, and internal tools with clean API integrations and architecture built to scale as your product grows.",
     price: "from $4,500",
-    image: "https://picsum.photos/seed/web-development-svc/640/400",
+    image:
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=640&h=400&fit=crop&q=80",
     accent: "slate",
     span: "lg:col-span-5",
     height: "h-48",
@@ -33,7 +35,8 @@ const services = [
     description:
       "User research, wireframes, prototypes, and design systems for mobile-first interfaces that feel effortless from the first tap.",
     price: "from $3,000",
-    image: "https://picsum.photos/seed/uxui-svc/640/400",
+    image:
+      "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=640&h=400&fit=crop&q=80",
     accent: "slate",
     span: "lg:col-span-5",
     height: "h-48",
@@ -44,7 +47,8 @@ const services = [
     description:
       "Native iOS and Android apps, plus cross-platform builds with React Native and Flutter — one codebase, every device.",
     price: "from $6,000",
-    image: "https://picsum.photos/seed/mobile-dev-svc/640/480",
+    image:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=640&h=480&fit=crop&q=80",
     accent: "teal",
     span: "lg:col-span-7",
     height: "h-56",
@@ -55,7 +59,8 @@ const services = [
     description:
       "MVP design and product strategy for founders — rapid prototyping that gets your idea in front of users and investors fast.",
     price: "from $3,500",
-    image: "https://picsum.photos/seed/product-design-svc/640/400",
+    image:
+      "https://images.unsplash.com/photo-1587355760421-b9de3226a046?w=640&h=400&fit=crop&q=80",
     accent: "slate",
     span: "lg:col-span-4",
     height: "h-48",
@@ -66,7 +71,8 @@ const services = [
     description:
       "Manual and automated testing — including regression, performance, and security checks — so what you ship actually holds up.",
     price: "from $1,500",
-    image: "https://picsum.photos/seed/qa-testing-svc/640/400",
+    image:
+      "https://images.unsplash.com/photo-1754039985008-a15410211b67?w=640&h=400&fit=crop&q=80",
     accent: "slate",
     span: "lg:col-span-4",
     height: "h-48",
@@ -77,7 +83,8 @@ const services = [
     description:
       "Brand identity, marketing assets, social content, and pitch decks — visual storytelling that makes your product stick in people's minds.",
     price: "from $1,200",
-    image: "https://picsum.photos/seed/graphic-design-svc/640/400",
+    image:
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=640&h=400&fit=crop&q=80",
     accent: "slate",
     span: "lg:col-span-4",
     height: "h-48",

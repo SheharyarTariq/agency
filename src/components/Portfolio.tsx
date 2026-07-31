@@ -470,18 +470,13 @@ export default function Portfolio() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-            {/* Row 1: Mi Taller (7) + Strategy Shortcut (5) */}
-            <LegacyCard
-              href="https://mitaller.co"
-              src="/projects/mitaller.png"
-              alt="Mi Taller — Vehicle workshop directory"
-              category="Web Platform"
-              domain="mitaller.co"
-              title="Mi Taller"
-              accentColor="#3B82F6"
+            {/* Row 1: Eduvents (7, latest project — featured first) + Strategy Shortcut (5) */}
+            <ProjectCard
+              project={eduvents}
               className="lg:col-span-7"
               height="h-80"
               delay={0}
+              onOpen={setActiveProject}
             />
             <LegacyCard
               href="https://strategy-shortcut-omega.vercel.app"
@@ -496,13 +491,18 @@ export default function Portfolio() {
               delay={0.1}
             />
 
-            {/* Row 2: Eduvents (5) + NYF (7) */}
-            <ProjectCard
-              project={eduvents}
+            {/* Row 2: Mi Taller (5) + NYF (7) */}
+            <LegacyCard
+              href="https://mitaller.co"
+              src="/projects/mitaller.png"
+              alt="Mi Taller — Vehicle workshop directory"
+              category="Web Platform"
+              domain="mitaller.co"
+              title="Mi Taller"
+              accentColor="#3B82F6"
               className="lg:col-span-5"
               height="h-72"
               delay={0.05}
-              onOpen={setActiveProject}
             />
             <ProjectCard
               project={nyf}

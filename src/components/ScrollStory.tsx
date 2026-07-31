@@ -1,26 +1,22 @@
 "use client";
 
 /**
- * ScrollStory — Scroll-driven narrative with GSAP ScrollTrigger enhancements
+ * ScrollStory — narrative section with GSAP ScrollTrigger ambient enhancements
  *
- * Changes vs previous version:
- * - Each chapter wrapper shrunk from 150vh → 120vh (less dead scroll)
- * - GSAP ScrollTrigger canvas: floating dot particles that react to scroll
- * - GSAP-driven horizontal "typewriter" word ticker always visible while scrolling
- * - GSAP floating words drift layer that stays alive between chapters
+ * Chapters reveal once as they enter the viewport (whileInView) and then stay
+ * fully visible — no pinning, no scroll-scrubbed fade in/out. Background
+ * particles, the word ticker, and floating words remain scroll-reactive.
  */
 
 import { memo, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const WILL_CHANGE_TO: React.CSSProperties = {
-  willChange: "transform, opacity",
-};
-const WILL_CHANGE_T: React.CSSProperties = { willChange: "transform" };
+const EASE = [0.16, 1, 0.3, 1] as const;
+const VIEWPORT = { once: true, margin: "-120px" } as const;
 
 // ── GSAP Particle Canvas ─────────────────────────────────────────────────────
 interface Particle {
@@ -317,51 +313,39 @@ function FloatingWords({
 }
 
 // ── Chapter 1 — "The Studio" ─────────────────────────────────────────────────
-const ChapterStudio = memo(function ChapterStudio({
-  progress,
-}: {
-  progress: MotionValue<number>;
-}) {
-  const opacity = useTransform(progress, [0, 0.12, 0.72, 0.88], [0, 1, 1, 0]);
-  const y = useTransform(progress, [0, 0.12, 0.72, 0.88], [50, 0, 0, -50]);
-  const scale = useTransform(progress, [0, 0.12], [0.94, 1]);
-
-  const orbScale = useTransform(progress, [0, 0.3], [0.75, 1.15]);
-  const orbOpacity = useTransform(
-    progress,
-    [0, 0.12, 0.72, 0.88],
-    [0, 0.7, 0.7, 0],
-  );
-
-  const line1Width = useTransform(progress, [0.04, 0.22], ["0%", "100%"]);
-  const line2Width = useTransform(progress, [0.08, 0.26], ["0%", "100%"]);
-
-  const headY1 = useTransform(progress, [0.04, 0.18], [70, 0]);
-  const headY2 = useTransform(progress, [0.08, 0.22], [70, 0]);
+const ChapterStudio = memo(function ChapterStudio() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, VIEWPORT);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+    <div
+      ref={ref}
+      className="relative w-full flex items-center justify-center"
+    >
       <motion.div
         className="absolute w-[45vw] h-[45vw] max-w-3xl rounded-full"
         aria-hidden="true"
+        initial={{ scale: 0.85, opacity: 0 }}
+        animate={inView ? { scale: 1, opacity: 0.7 } : {}}
+        transition={{ duration: 1.4, ease: EASE }}
         style={{
-          scale: orbScale,
-          opacity: orbOpacity,
           background:
             "radial-gradient(circle, rgba(13,148,136,0.22) 0%, rgba(13,148,136,0.04) 60%, transparent 80%)",
           filter: "blur(40px)",
-          willChange: "transform, opacity",
-          translateZ: 0,
         }}
       />
 
       <motion.div
-        style={{ opacity, y, scale, ...WILL_CHANGE_TO }}
+        initial={{ opacity: 0, y: 40, scale: 0.96 }}
+        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ duration: 0.9, ease: EASE }}
         className="relative z-10 text-center px-6 max-w-5xl mx-auto"
       >
         <motion.p
           className="text-[11px] uppercase tracking-[0.28em] font-semibold text-teal-400 mb-8"
-          style={{ opacity }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, ease: EASE }}
         >
           Devlyncs
         </motion.p>
@@ -370,7 +354,9 @@ const ChapterStudio = memo(function ChapterStudio({
           <span className="block overflow-hidden">
             <motion.span
               className="block"
-              style={{ y: headY1, ...WILL_CHANGE_T }}
+              initial={{ y: 60 }}
+              animate={inView ? { y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             >
               Where ideas
             </motion.span>
@@ -378,7 +364,9 @@ const ChapterStudio = memo(function ChapterStudio({
           <span className="block overflow-hidden">
             <motion.span
               className="block text-teal-400"
-              style={{ y: headY2, ...WILL_CHANGE_T }}
+              initial={{ y: 60 }}
+              animate={inView ? { y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.22, ease: EASE }}
             >
               become products.
             </motion.span>
@@ -387,15 +375,19 @@ const ChapterStudio = memo(function ChapterStudio({
 
         <div className="flex items-center justify-center gap-4 mt-12">
           <motion.div
-            className="h-px bg-white/20"
-            style={{ width: line1Width }}
+            className="h-px w-16 bg-white/20 origin-right"
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
           />
           <span className="text-white/30 text-xs tracking-widest whitespace-nowrap">
             EST. 2016
           </span>
           <motion.div
-            className="h-px bg-white/20"
-            style={{ width: line2Width }}
+            className="h-px w-16 bg-white/20 origin-left"
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
           />
         </div>
       </motion.div>
@@ -412,29 +404,21 @@ const STATS = [
 ] as const;
 
 function StatItem({
-  progress,
+  inView,
   index,
   value,
   label,
 }: {
-  progress: MotionValue<number>;
+  inView: boolean;
   index: number;
   value: string;
   label: string;
 }) {
-  const opacity = useTransform(
-    progress,
-    [0.08 + index * 0.04, 0.2 + index * 0.04],
-    [0, 1],
-  );
-  const y = useTransform(
-    progress,
-    [0.08 + index * 0.04, 0.2 + index * 0.04],
-    [40, 0],
-  );
   return (
     <motion.div
-      style={{ opacity, y, ...WILL_CHANGE_TO }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay: 0.15 + index * 0.1, ease: EASE }}
       className="text-center"
     >
       <p className="font-display text-[clamp(3rem,6vw,5.5rem)] leading-none tracking-tight text-cream-50 mb-3">
@@ -445,16 +429,12 @@ function StatItem({
   );
 }
 
-const ChapterNumbers = memo(function ChapterNumbers({
-  progress,
-}: {
-  progress: MotionValue<number>;
-}) {
-  const opacity = useTransform(progress, [0, 0.12, 0.78, 0.92], [0, 1, 1, 0]);
-  const y = useTransform(progress, [0, 0.12, 0.78, 0.92], [50, 0, 0, -50]);
+const ChapterNumbers = memo(function ChapterNumbers() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, VIEWPORT);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+    <div ref={ref} className="relative w-full">
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -465,7 +445,9 @@ const ChapterNumbers = memo(function ChapterNumbers({
       />
 
       <motion.div
-        style={{ opacity, y, ...WILL_CHANGE_TO }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: EASE }}
         className="relative z-10 w-full max-w-5xl mx-auto px-6"
       >
         <p className="text-center text-[11px] uppercase tracking-[0.28em] font-semibold text-teal-400 mb-16">
@@ -476,7 +458,7 @@ const ChapterNumbers = memo(function ChapterNumbers({
           {STATS.map((stat, i) => (
             <StatItem
               key={stat.value}
-              progress={progress}
+              inView={inView}
               index={i}
               value={stat.value}
               label={stat.label}
@@ -509,31 +491,23 @@ const SERVICES = [
 ] as const;
 
 function ServiceRow({
-  progress,
+  inView,
   index,
   n,
   name,
   desc,
 }: {
-  progress: MotionValue<number>;
+  inView: boolean;
   index: number;
   n: string;
   name: string;
   desc: string;
 }) {
-  const opacity = useTransform(
-    progress,
-    [0.06 + index * 0.05, 0.18 + index * 0.05],
-    [0, 1],
-  );
-  const x = useTransform(
-    progress,
-    [0.06 + index * 0.05, 0.18 + index * 0.05],
-    [-40, 0],
-  );
   return (
     <motion.div
-      style={{ opacity, x, ...WILL_CHANGE_TO }}
+      initial={{ opacity: 0, x: -30 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.7, delay: 0.1 + index * 0.09, ease: EASE }}
       className="flex items-center justify-between py-6 group"
     >
       <div className="flex items-center gap-8">
@@ -549,18 +523,16 @@ function ServiceRow({
   );
 }
 
-const ChapterServices = memo(function ChapterServices({
-  progress,
-}: {
-  progress: MotionValue<number>;
-}) {
-  const opacity = useTransform(progress, [0, 0.12, 0.82, 0.96], [0, 1, 1, 0]);
-  const y = useTransform(progress, [0, 0.12, 0.82, 0.96], [50, 0, 0, -50]);
+const ChapterServices = memo(function ChapterServices() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, VIEWPORT);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+    <div ref={ref} className="relative w-full">
       <motion.div
-        style={{ opacity, y, ...WILL_CHANGE_TO }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: EASE }}
         className="relative z-10 w-full max-w-5xl mx-auto px-6"
       >
         <p className="text-[11px] uppercase tracking-[0.28em] font-semibold text-teal-400 mb-16 text-center">
@@ -571,7 +543,7 @@ const ChapterServices = memo(function ChapterServices({
           {SERVICES.map((svc, i) => (
             <ServiceRow
               key={svc.n}
-              progress={progress}
+              inView={inView}
               index={i}
               n={svc.n}
               name={svc.name}
@@ -585,18 +557,15 @@ const ChapterServices = memo(function ChapterServices({
 });
 
 // ── Chapter 4 — "The CTA" ────────────────────────────────────────────────────
-const ChapterCTA = memo(function ChapterCTA({
-  progress,
-}: {
-  progress: MotionValue<number>;
-}) {
-  const opacity = useTransform(progress, [0, 0.18, 1], [0, 1, 1]);
-  const y = useTransform(progress, [0, 0.18], [50, 0]);
-  const buttonScale = useTransform(progress, [0.28, 0.48], [0.85, 1]);
-  const buttonOpacity = useTransform(progress, [0.28, 0.48], [0, 1]);
+const ChapterCTA = memo(function ChapterCTA() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, VIEWPORT);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+    <div
+      ref={ref}
+      className="relative w-full flex items-center justify-center"
+    >
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -606,7 +575,9 @@ const ChapterCTA = memo(function ChapterCTA({
       />
 
       <motion.div
-        style={{ opacity, y, ...WILL_CHANGE_TO }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.9, ease: EASE }}
         className="relative z-10 text-center px-6 max-w-4xl mx-auto"
       >
         <h2 className="font-display text-[clamp(3rem,8vw,7rem)] leading-[0.92] tracking-tight text-cream-50 mb-8">
@@ -615,11 +586,9 @@ const ChapterCTA = memo(function ChapterCTA({
         </h2>
 
         <motion.div
-          style={{
-            scale: buttonScale,
-            opacity: buttonOpacity,
-            ...WILL_CHANGE_TO,
-          }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
         >
           <a
             href="#contact"
@@ -652,57 +621,15 @@ const CHAPTERS = [
   { id: "cta", label: "Start", component: ChapterCTA },
 ];
 
-// Each chapter wrapper — now 120vh (was 150vh) for tighter transitions
-const CHAPTER_HEIGHT = "120vh";
-
-function Chapter({
-  chapter,
-  index,
-}: {
-  chapter: (typeof CHAPTERS)[number];
-  index: number;
-}) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: wrapperRef,
-    offset: ["start start", "end end"],
-    layoutEffect: false,
-  });
-
-  const labelOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.05, 0.9, 1],
-    [0, 1, 1, 0],
-  );
+function Chapter({ chapter }: { chapter: (typeof CHAPTERS)[number] }) {
   const Component = chapter.component;
 
   return (
     <div
-      ref={wrapperRef}
-      className="relative"
-      style={{ height: CHAPTER_HEIGHT }}
+      className="relative w-full min-h-[70vh] md:min-h-screen flex items-center overflow-hidden py-24 md:py-32"
       id={`chapter-${chapter.id}`}
     >
-      {/* Sticky viewport */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Chapter scroll progress bar */}
-        <motion.div
-          className="absolute top-0 left-0 h-0.5 bg-teal-500/60 z-50 origin-left"
-          style={{ scaleX: scrollYProgress, ...WILL_CHANGE_T }}
-        />
-
-        <Component progress={scrollYProgress} />
-
-        {/* Chapter label — bottom right */}
-        <motion.div
-          className="absolute bottom-12 right-8 text-[10px] uppercase tracking-[0.2em] text-cream-50/20 font-semibold z-30"
-          style={{ opacity: labelOpacity }}
-        >
-          {String(index + 1).padStart(2, "0")} /{" "}
-          {CHAPTERS.length.toString().padStart(2, "0")} — {chapter.label}
-        </motion.div>
-      </div>
+      <Component />
     </div>
   );
 }
@@ -722,8 +649,8 @@ export default function ScrollStory() {
       {/* GSAP floating brand words — very subtle, always alive */}
       <FloatingWords sectionRef={sectionRef} />
 
-      {CHAPTERS.map((chapter, i) => (
-        <Chapter key={chapter.id} chapter={chapter} index={i} />
+      {CHAPTERS.map((chapter) => (
+        <Chapter key={chapter.id} chapter={chapter} />
       ))}
 
       {/* GSAP word ticker — pinned to section bottom */}

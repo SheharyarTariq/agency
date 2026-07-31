@@ -2,54 +2,49 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { LinkedinLogo } from "@phosphor-icons/react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 // Hoisted static transition base — avoids recreating object on every render
 const BASE_TRANSITION = { duration: 0.7, ease: EASE } as const;
 
-// TODO: Replace placeholder with real photo, name, role, bio
-const ALEX = {
-  initials: "AM",
+const HASSAN = {
+  initials: "HA",
   avatarFrom: "from-teal-100",
   avatarTo: "to-emerald-50",
-  name: "Alex Morgan",
-  role: "Creative Director",
-  specialty: "Brand strategy, visual identity, art direction",
+  name: "Hassan Ashfaq",
+  role: "Full Stack QA Engineer (Manual + Automation)",
+  specialty: "Manual testing, automated test suites, release quality",
 };
 
-// TODO: Replace placeholder with real photo, name, role, bio
-const SAM = {
-  initials: "SC",
+const AHMED = {
+  initials: "AK",
   avatarFrom: "from-blue-100",
   avatarTo: "to-sky-50",
-  name: "Sam Chen",
-  role: "Lead Developer",
-  specialty: "Next.js, React, full-stack architecture",
+  name: "Ahmed Kamran",
+  role: "Senior Software Engineer",
+  specialty: "Full-stack development, Next.js & React, scalable architecture",
 };
 
-// TODO: Replace placeholder with real photo, name, role, bio
-const JORDAN = {
-  initials: "JL",
+const SHEHRYAR = {
+  initials: "SH",
   avatarFrom: "from-purple-100",
   avatarTo: "to-violet-50",
-  name: "Jordan Lee",
-  role: "UX Designer",
-  specialty: "Product design, user research, design systems",
+  name: "Shehryar",
+  role: "Senior Software Engineer",
+  specialty: "Backend systems, API design, database architecture",
 };
 
-// TODO: Replace placeholder with real photo, name, role, bio
-const RILEY = {
-  initials: "RP",
+const ABBAS = {
+  initials: "AB",
   avatarFrom: "from-amber-100",
   avatarTo: "to-orange-50",
-  name: "Riley Park",
-  role: "QA & Mobile Lead",
-  specialty: "Mobile development, test automation, release quality",
+  name: "Abbas",
+  role: "UI/UX Designer",
+  specialty: "User interface design, prototyping, design systems",
 };
 
-const MEMBERS = [ALEX, SAM, JORDAN, RILEY];
+const MEMBERS = [HASSAN, AHMED, SHEHRYAR, ABBAS];
 
 type Member = (typeof MEMBERS)[number];
 
@@ -93,17 +88,6 @@ function MemberCard({
         <p className="text-xs text-ink-800/50 leading-relaxed mt-0.5">
           {member.specialty}
         </p>
-      </div>
-
-      {/* Social icons */}
-      <div className="flex items-center gap-2 pt-1 mt-auto">
-        <a
-          href="#"
-          aria-label={`${member.name} on LinkedIn`}
-          className="text-ink-950/30 hover:text-teal-600 transition-colors duration-200"
-        >
-          <LinkedinLogo weight="fill" size={14} />
-        </a>
       </div>
     </motion.div>
   );

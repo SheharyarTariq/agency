@@ -89,6 +89,30 @@ const services = [
     span: "lg:col-span-4",
     height: "h-48",
   },
+  {
+    title: "Chatbot Development",
+    tagline: "Chatbot Development",
+    description:
+      "Custom AI-powered chatbots trained on your product and docs — integrated into your website, app, or Slack to handle support, sales, and onboarding around the clock.",
+    price: "from $2,000",
+    image:
+      "https://images.unsplash.com/photo-1676573408178-a5f280c3a320?w=640&h=480&fit=crop&q=80",
+    accent: "teal",
+    span: "lg:col-span-6",
+    height: "h-56",
+  },
+  {
+    title: "Chrome Extension Development",
+    tagline: "Chrome Extension Development",
+    description:
+      "Browser extensions built on Manifest V3 — from productivity tools to full SaaS companions, with backend sync, auth, and secure storage baked in.",
+    price: "from $2,200",
+    image:
+      "https://images.unsplash.com/photo-1762330917439-78d1a00e3fe5?w=640&h=480&fit=crop&q=80",
+    accent: "slate",
+    span: "lg:col-span-6",
+    height: "h-56",
+  },
 ];
 
 function ServiceCard({

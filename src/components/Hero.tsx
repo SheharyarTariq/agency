@@ -377,9 +377,9 @@ export default function Hero() {
               <div className="p-1.5 rounded-[2.5rem] bg-ink-950/5 border border-ink-950/6">
                 <div className="rounded-[calc(2.5rem-6px)] bg-white shadow-soft-lg overflow-hidden">
                   <img
-                    src={`https://picsum.photos/seed/agency-hero/480/300`}
-                    alt="Recent project showcase"
-                    className="w-full h-48 object-cover"
+                    src="/projects/eduvents/Screenshot-2026-04-25-at-2.58.37-PM.png"
+                    alt="Eduvents — education events platform"
+                    className="w-full h-48 object-cover object-top"
                   />
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-2">
@@ -391,10 +391,10 @@ export default function Hero() {
                       </span>
                     </div>
                     <p className="text-ink-950 font-semibold text-sm">
-                      Meridian Co. — Brand Identity
+                      Eduvents — Education Platform
                     </p>
                     <p className="text-ink-800/50 text-xs mt-0.5">
-                      Logo · Type · Color · Guidelines
+                      Next.js · MongoDB · Stripe · AWS S3
                     </p>
                     <div className="mt-4 h-1.5 rounded-full bg-ink-950/6 overflow-hidden">
                       <motion.div
@@ -436,7 +436,7 @@ export default function Hero() {
               <div className="p-1 rounded-2xl bg-teal-600/8 border border-teal-600/15">
                 <div className="rounded-[calc(1rem-3px)] bg-white/95 px-4 py-3 shadow-soft">
                   <p className="text-[11px] text-ink-800/50 mb-0.5">
-                    Brands served
+                    Founders trusted
                   </p>
                   <p className="font-display text-2xl font-bold text-ink-950">
                     60+

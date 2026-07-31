@@ -10,7 +10,6 @@ const services = [
     tagline: "Web Design",
     description:
       "Mobile-first, conversion-focused design for landing pages, corporate sites, and e-commerce storefronts — built to engage visitors and turn them into customers.",
-    price: "from $2,500",
     image:
       "https://images.unsplash.com/photo-1707836885254-79b6e3d7b18d?w=640&h=480&fit=crop&q=80",
     accent: "teal",
@@ -22,7 +21,6 @@ const services = [
     tagline: "Web Development",
     description:
       "Custom web apps, SaaS platforms, and internal tools with clean API integrations and architecture built to scale as your product grows.",
-    price: "from $4,500",
     image:
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=640&h=400&fit=crop&q=80",
     accent: "slate",
@@ -34,7 +32,6 @@ const services = [
     tagline: "UX/UI Design",
     description:
       "User research, wireframes, prototypes, and design systems for mobile-first interfaces that feel effortless from the first tap.",
-    price: "from $3,000",
     image:
       "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=640&h=400&fit=crop&q=80",
     accent: "slate",
@@ -46,7 +43,6 @@ const services = [
     tagline: "Mobile Development",
     description:
       "Native iOS and Android apps, plus cross-platform builds with React Native and Flutter — one codebase, every device.",
-    price: "from $6,000",
     image:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=640&h=480&fit=crop&q=80",
     accent: "teal",
@@ -58,7 +54,6 @@ const services = [
     tagline: "Digital Product Design",
     description:
       "MVP design and product strategy for founders — rapid prototyping that gets your idea in front of users and investors fast.",
-    price: "from $3,500",
     image:
       "https://images.unsplash.com/photo-1587355760421-b9de3226a046?w=640&h=400&fit=crop&q=80",
     accent: "slate",
@@ -70,7 +65,6 @@ const services = [
     tagline: "Testing & QA",
     description:
       "Manual and automated testing — including regression, performance, and security checks — so what you ship actually holds up.",
-    price: "from $1,500",
     image:
       "https://images.unsplash.com/photo-1754039985008-a15410211b67?w=640&h=400&fit=crop&q=80",
     accent: "slate",
@@ -82,7 +76,6 @@ const services = [
     tagline: "Graphic Design",
     description:
       "Brand identity, marketing assets, social content, and pitch decks — visual storytelling that makes your product stick in people's minds.",
-    price: "from $1,200",
     image:
       "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=640&h=400&fit=crop&q=80",
     accent: "slate",
@@ -94,7 +87,6 @@ const services = [
     tagline: "Chatbot Development",
     description:
       "Custom AI-powered chatbots trained on your product and docs — integrated into your website, app, or Slack to handle support, sales, and onboarding around the clock.",
-    price: "from $2,000",
     image:
       "https://images.unsplash.com/photo-1676573408178-a5f280c3a320?w=640&h=480&fit=crop&q=80",
     accent: "teal",
@@ -106,7 +98,6 @@ const services = [
     tagline: "Chrome Extension Development",
     description:
       "Browser extensions built on Manifest V3 — from productivity tools to full SaaS companions, with backend sync, auth, and secure storage baked in.",
-    price: "from $2,200",
     image:
       "https://images.unsplash.com/photo-1762330917439-78d1a00e3fe5?w=640&h=480&fit=crop&q=80",
     accent: "slate",
@@ -157,14 +148,9 @@ function ServiceCard({
 
           {/* Content */}
           <div className="p-6 flex flex-col flex-1">
-            <div className="flex items-start justify-between gap-3 mb-3">
-              <h3 className="font-display text-xl font-semibold text-ink-950 leading-snug">
-                {service.title}
-              </h3>
-              <span className="text-[11px] font-semibold text-teal-700 bg-teal-600/8 px-2.5 py-1 rounded-full flex-shrink-0 mt-0.5">
-                {service.price}
-              </span>
-            </div>
+            <h3 className="font-display text-xl font-semibold text-ink-950 leading-snug mb-3">
+              {service.title}
+            </h3>
 
             <p className="text-sm leading-relaxed text-ink-800/55 flex-1 mb-5">
               {service.description}

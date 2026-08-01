@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
   MagnifyingGlass,
-  Compass,
   PaintBrush,
+  Code,
   RocketLaunch,
 } from "@phosphor-icons/react";
 
@@ -15,31 +15,31 @@ const steps = [
     icon: MagnifyingGlass,
     title: "Discovery",
     description:
-      "We dig into your goals, audience, competitors, and market. Every great project starts with genuine understanding — not assumptions.",
+      "We map out your product goals, users, and technical requirements — defining scope, platform choices, and a realistic timeline before any design or code begins.",
     color: "bg-teal-600/8 text-teal-600 border-teal-600/20",
   },
   {
     number: "02",
-    icon: Compass,
-    title: "Strategy",
+    icon: PaintBrush,
+    title: "Design",
     description:
-      "We define the roadmap, creative direction, and scope. You get a clear plan before a single pixel is designed or line of code is written.",
+      "Wireframes, prototypes, and design systems for web and mobile — validated with you at every step, so what gets built is exactly what your users need.",
     color: "bg-blue-600/8 text-blue-600 border-blue-600/20",
   },
   {
     number: "03",
-    icon: PaintBrush,
-    title: "Craft",
+    icon: Code,
+    title: "Build & Test",
     description:
-      "Design, develop, and iterate — collaborating closely with your team through regular check-ins, reviews, and transparent progress updates.",
+      "Our developers build your web app, mobile app, or platform on clean, scalable architecture — with manual and automated QA running throughout, not just at the end.",
     color: "bg-violet-600/8 text-violet-600 border-violet-600/20",
   },
   {
     number: "04",
     icon: RocketLaunch,
-    title: "Launch",
+    title: "Launch & Support",
     description:
-      "We ship, measure, and refine. Launching is just the beginning — we stick around to make sure everything performs as it should.",
+      "We deploy, monitor performance, and stay on to fix, iterate, and support your product post-launch — because shipping is the start, not the finish line.",
     color: "bg-emerald-600/8 text-emerald-600 border-emerald-600/20",
   },
 ];

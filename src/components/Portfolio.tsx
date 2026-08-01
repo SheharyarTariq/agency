@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import ProjectModal, { type Project } from "./ProjectModal";
@@ -308,11 +309,12 @@ function ProjectCard({
         className={`group block relative overflow-hidden rounded-[2rem] border border-ink-950/8 shadow-soft hover:shadow-soft-lg transition-shadow duration-500 ${height} w-full text-left`}
         aria-label={`View ${project.title} case study`}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={project.coverImage}
           alt={`${project.title} — ${project.category}`}
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          fill
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          className="object-cover object-top"
         />
         <HoverOverlay />
         <CategoryTag label={project.category} />
@@ -371,11 +373,12 @@ function LegacyCard({
         className={`group block relative overflow-hidden rounded-[2rem] border border-ink-950/8 shadow-soft hover:shadow-soft-lg transition-shadow duration-500 ${height}`}
         aria-label={`View ${title} project`}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={src}
           alt={alt}
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          fill
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          className="object-cover object-top"
         />
         <HoverOverlay />
         <CategoryTag label={category} />
@@ -470,18 +473,13 @@ export default function Portfolio() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-            {/* Row 1: Mi Taller (7) + Strategy Shortcut (5) */}
-            <LegacyCard
-              href="https://mitaller.co"
-              src="/projects/mitaller.png"
-              alt="Mi Taller — Vehicle workshop directory"
-              category="Web Platform"
-              domain="mitaller.co"
-              title="Mi Taller"
-              accentColor="#3B82F6"
+            {/* Row 1: Eduvents (7, latest project — featured first) + Strategy Shortcut (5) */}
+            <ProjectCard
+              project={eduvents}
               className="lg:col-span-7"
               height="h-80"
               delay={0}
+              onOpen={setActiveProject}
             />
             <LegacyCard
               href="https://strategy-shortcut-omega.vercel.app"
@@ -496,13 +494,18 @@ export default function Portfolio() {
               delay={0.1}
             />
 
-            {/* Row 2: Eduvents (5) + NYF (7) */}
-            <ProjectCard
-              project={eduvents}
+            {/* Row 2: Mi Taller (5) + NYF (7) */}
+            <LegacyCard
+              href="https://mitaller.co"
+              src="/projects/mitaller.png"
+              alt="Mi Taller — Vehicle workshop directory"
+              category="Web Platform"
+              domain="mitaller.co"
+              title="Mi Taller"
+              accentColor="#3B82F6"
               className="lg:col-span-5"
               height="h-72"
               delay={0.05}
-              onOpen={setActiveProject}
             />
             <ProjectCard
               project={nyf}

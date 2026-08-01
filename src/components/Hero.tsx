@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, Suspense, useState } from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, Star, Users, Trophy } from "@phosphor-icons/react";
 import * as THREE from "three";
@@ -15,10 +16,10 @@ function BubbleCanvas() {
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
-      antialias: true,
+      antialias: false,
       alpha: true,
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
     renderer.setClearColor(0x000000, 0);
 
@@ -105,11 +106,11 @@ function BubbleCanvas() {
     };
     window.addEventListener("mousemove", handleMouseMove);
 
-    let animFrameId: number;
+    let animFrameId = 0;
     let t = 0;
+    let inViewport = true;
 
-    const animate = () => {
-      animFrameId = requestAnimationFrame(animate);
+    const renderFrame = () => {
       t += 0.008;
 
       const pos = geometry.attributes.position.array as Float32Array;
@@ -128,7 +129,34 @@ function BubbleCanvas() {
 
       renderer.render(scene, camera);
     };
-    animate();
+
+    const loop = () => {
+      animFrameId = requestAnimationFrame(loop);
+      renderFrame();
+    };
+
+    // Only render while the canvas is actually visible — scrolling the
+    // hero out of view (or backgrounding the tab) shouldn't keep the GPU busy.
+    const shouldRun = () => inViewport && document.visibilityState === "visible";
+    const syncLoop = () => {
+      if (shouldRun() && animFrameId === 0) {
+        loop();
+      } else if (!shouldRun() && animFrameId !== 0) {
+        cancelAnimationFrame(animFrameId);
+        animFrameId = 0;
+      }
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inViewport = entry.isIntersecting;
+        syncLoop();
+      },
+      { threshold: 0 },
+    );
+    io.observe(canvas);
+    document.addEventListener("visibilitychange", syncLoop);
+    syncLoop();
 
     // Resize
     const handleResize = () => {
@@ -141,6 +169,8 @@ function BubbleCanvas() {
 
     return () => {
       cancelAnimationFrame(animFrameId);
+      io.disconnect();
+      document.removeEventListener("visibilitychange", syncLoop);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       renderer.dispose();
@@ -376,11 +406,16 @@ export default function Hero() {
             >
               <div className="p-1.5 rounded-[2.5rem] bg-ink-950/5 border border-ink-950/6">
                 <div className="rounded-[calc(2.5rem-6px)] bg-white shadow-soft-lg overflow-hidden">
-                  <img
-                    src={`https://picsum.photos/seed/agency-hero/480/300`}
-                    alt="Recent project showcase"
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="relative w-full h-48">
+                    <Image
+                      src="/projects/eduvents/Screenshot-2026-04-25-at-2.58.37-PM.png"
+                      alt="Eduvents — education events platform"
+                      fill
+                      sizes="480px"
+                      priority
+                      className="object-cover object-top"
+                    />
+                  </div>
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[11px] uppercase tracking-widest font-semibold text-teal-600">
@@ -391,10 +426,10 @@ export default function Hero() {
                       </span>
                     </div>
                     <p className="text-ink-950 font-semibold text-sm">
-                      Meridian Co. — Brand Identity
+                      Eduvents — Education Platform
                     </p>
                     <p className="text-ink-800/50 text-xs mt-0.5">
-                      Logo · Type · Color · Guidelines
+                      Next.js · MongoDB · Stripe · AWS S3
                     </p>
                     <div className="mt-4 h-1.5 rounded-full bg-ink-950/6 overflow-hidden">
                       <motion.div
@@ -436,7 +471,7 @@ export default function Hero() {
               <div className="p-1 rounded-2xl bg-teal-600/8 border border-teal-600/15">
                 <div className="rounded-[calc(1rem-3px)] bg-white/95 px-4 py-3 shadow-soft">
                   <p className="text-[11px] text-ink-800/50 mb-0.5">
-                    Brands served
+                    Founders trusted
                   </p>
                   <p className="font-display text-2xl font-bold text-ink-950">
                     60+

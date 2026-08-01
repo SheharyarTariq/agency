@@ -6,43 +6,66 @@ import { ArrowLeft, ArrowRight, Quotes } from "@phosphor-icons/react";
 
 const testimonials = [
   {
+    service: "Web Design",
     quote:
-      "Devlyncs completely transformed how our brand shows up in the world. The identity they built for us was unlike anything we'd seen in our space — bold, considered, and built to last. We've had more compliments on our branding in the last six months than in the previous five years.",
-    author: "Harriet Wyndham",
-    role: "Founder, Meridian Co.",
-    avatar: "seed/harriet/80/80",
+      "Our new site looks incredible and, more importantly, it converts. Devlyncs redesigned our landing pages around a clear conversion path, and our sign-up rate jumped noticeably within the first month.",
+    author: "Elena Cortez",
+    role: "Marketing Lead, Northbridge Retail",
+    avatar: "seed/elena/80/80",
     rating: 5,
   },
   {
+    service: "Web Development",
     quote:
-      "We came to Devlyncs with a vague idea and a tight deadline. They came back with a clear strategy, a beautiful design, and a site that launched on time. The process felt collaborative the entire way through — never like handing off to a black box.",
+      "We needed a custom SaaS platform built fast without cutting corners on architecture. Devlyncs delivered clean, scalable code with solid API integrations — the kind of foundation we can actually grow on.",
+    author: "Marcus Doyle",
+    role: "CTO, Fieldstone Analytics",
+    avatar: "seed/marcus/80/80",
+    rating: 5,
+  },
+  {
+    service: "UX/UI Design",
+    quote:
+      "The wireframes and prototypes Devlyncs delivered made our product feel effortless for the first time. User testing confirmed it — task completion went up and support tickets about confusing flows dropped.",
     author: "Priya Krishnamurthy",
-    role: "CEO, Pulse Technologies",
+    role: "Head of Product, Pulse Technologies",
     avatar: "seed/priya/80/80",
     rating: 5,
   },
   {
+    service: "Mobile Development",
     quote:
-      "Working with Devlyncs on our product redesign was the best decision we made last year. They asked the right questions, pushed back when our instincts were wrong, and delivered a UI our users actually love. Our activation rate went up by 34% in the first quarter post-launch.",
-    author: "Tobias Eckermann",
-    role: "Head of Product, Vanta Labs",
-    avatar: "seed/tobias/80/80",
+      "Devlyncs built our iOS and Android apps from one React Native codebase, on time and without the usual cross-platform headaches. App store reviews have been consistently strong since launch.",
+    author: "Daniel Osei",
+    role: "Founder, Ridewell",
+    avatar: "seed/daniel/80/80",
     rating: 5,
   },
   {
+    service: "Digital Product Design",
     quote:
-      "I've worked with a lot of agencies over the years. Devlyncs is the first one that felt like a genuine partner rather than a vendor. They cared about the outcome, not just the deliverable — and the work reflects that.",
+      "We came in with just an idea and a deadline to raise our seed round. Devlyncs turned it into a clickable MVP prototype in weeks — it's the exact deck that got us in front of investors.",
+    author: "Sofia Marchetti",
+    role: "Founder, Lumen Health",
+    avatar: "seed/sofia/80/80",
+    rating: 5,
+  },
+  {
+    service: "Testing & QA",
+    quote:
+      "Devlyncs' QA team caught issues in our release pipeline that our own team had missed for months. Their regression and automated test coverage gave us the confidence to ship weekly instead of quarterly.",
+    author: "James Rutherford",
+    role: "Director of Engineering, Crest Finance",
+    avatar: "seed/james/80/80",
+    rating: 5,
+  },
+  {
+    service: "Graphic Design",
+    quote:
+      "Our brand identity finally looks like the company we actually are. Devlyncs delivered a full visual system — logo, guidelines, pitch deck — that we still get compliments on months later.",
     author: "Celia Okafor-Briggs",
     role: "CMO, Luma Studio",
     avatar: "seed/celia/80/80",
-    rating: 5,
-  },
-  {
-    quote:
-      "The Devlyncs team handled our full rebrand and website build simultaneously without missing a beat. Communication was excellent — weekly updates, no surprises. I'd recommend them to anyone who wants quality work done properly.",
-    author: "James Rutherford",
-    role: "Director, Crest Finance",
-    avatar: "seed/james/80/80",
     rating: 5,
   },
 ];
@@ -89,12 +112,22 @@ export default function Testimonials() {
         <div className="max-w-3xl mx-auto">
           <div className="p-1.5 rounded-[2.5rem] border border-ink-950/6 bg-ink-950/[0.02]">
             <div className="rounded-[calc(2.5rem-6px)] bg-white shadow-soft-lg p-10 md:p-14">
-              {/* Quotes icon */}
-              <Quotes
-                size={32}
-                weight="fill"
-                className="text-teal-600/25 mb-6"
-              />
+              {/* Quotes icon + service tag */}
+              <div className="flex items-center justify-between mb-6">
+                <Quotes size={32} weight="fill" className="text-teal-600/25" />
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={`service-${activeIdx}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="text-[10px] uppercase tracking-[0.16em] font-semibold text-teal-600 bg-teal-600/8 px-3 py-1 rounded-full"
+                  >
+                    {t.service}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
 
               {/* Quote text */}
               <AnimatePresence mode="wait">

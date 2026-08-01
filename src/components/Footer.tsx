@@ -10,27 +10,30 @@ import {
 
 const links = {
   Services: [
-    "Web Design",
-    "Web Development",
-    "UX/UI Design",
-    "Mobile Development",
-    "Digital Product Design",
-    "Testing & QA",
-    "Graphic Design",
+    { label: "Web Design", href: "#services" },
+    { label: "Web Development", href: "#services" },
+    { label: "UX/UI Design", href: "#services" },
+    { label: "Mobile Development", href: "#services" },
+    { label: "Digital Product Design", href: "#services" },
+    { label: "Testing & QA", href: "#services" },
+    { label: "Graphic Design", href: "#services" },
   ],
-  Company: ["About us", "Our process", "Careers", "Blog", "Press"],
+  Company: [
+    { label: "Our work", href: "#portfolio" },
+    { label: "Our process", href: "#process" },
+    { label: "Our team", href: "#team" },
+    { label: "Client reviews", href: "#testimonials" },
+  ],
   Connect: [
-    "Contact us",
-    "Book a call",
-    "support@devlyncs.com",
-    "LinkedIn",
-    "Dribbble",
+    { label: "Contact us", href: "#contact" },
+    { label: "Book a call", href: "#contact" },
+    { label: "support@devlyncs.com", href: "mailto:support@devlyncs.com" },
   ],
   Legal: [
-    "Privacy policy",
-    "Terms of service",
-    "Cookie settings",
-    "Accessibility",
+    { label: "Privacy policy", href: "#" },
+    { label: "Terms of service", href: "#" },
+    { label: "Cookie settings", href: "#" },
+    { label: "Accessibility", href: "#" },
   ],
 };
 
@@ -86,12 +89,12 @@ export default function Footer() {
                 </p>
                 <ul className="space-y-2.5">
                   {items.map((item) => (
-                    <li key={item}>
+                    <li key={item.label}>
                       <a
-                        href="#"
+                        href={item.href}
                         className="text-[13px] text-cream-50/45 hover:text-cream-50/80 transition-colors duration-200"
                       >
-                        {item}
+                        {item.label}
                       </a>
                     </li>
                   ))}
